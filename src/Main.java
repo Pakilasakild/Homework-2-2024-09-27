@@ -9,12 +9,29 @@ public class Main {
         int choice = input.nextInt();
         int guesses = 0;
         while (choice != hiddenNum) {
-            if (choice < hiddenNum) {
-                System.out.println("The number is bigger");
+            int diff = Math.abs(choice - hiddenNum);
+            if (choice < hiddenNum && diff < 10) {
+                System.out.println("The number is bigger, you're very close! Try again");
                 choice = input.nextInt();
             }
-            else if (choice > hiddenNum) {
-                System.out.println("The number is smaller");
+            else if (choice < hiddenNum && diff < 20) {
+                System.out.println("The number is bigger, you're close! Try again");
+                choice = input.nextInt();
+            }
+            else if (choice < hiddenNum && diff > 20) {
+                System.out.println("The number is bigger, Keep trying.");
+                choice = input.nextInt();
+            }
+            else if (choice > hiddenNum && diff < 10) {
+                System.out.println("The number is smaller, you're very close! Try again");
+                choice = input.nextInt();
+            }
+            else if (choice > hiddenNum && diff < 20) {
+                System.out.println("The number is smaller, you're close! Try again");
+                choice = input.nextInt();
+            }
+            else if (choice > hiddenNum && diff > 20) {
+                System.out.println("The number is smaller, Keep trying.");
                 choice = input.nextInt();
             }
             else if (choice == hiddenNum) {
